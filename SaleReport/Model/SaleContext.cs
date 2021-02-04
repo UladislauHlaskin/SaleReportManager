@@ -10,32 +10,62 @@ namespace SaleReport.Model
     {
         public bool ClientExists(Func<Client, bool> predicate)
         {
-            return Clients.Any(predicate);
+            var exists = Clients.Any(predicate);
+            if (!exists)
+            {
+                exists = Clients.Local.Any(predicate);
+            }
+            return exists;
         }
 
         public Client GetClient(Func<Client, bool> predicate)
         {
-            return Clients.FirstOrDefault(predicate);
+            var item = Clients.FirstOrDefault(predicate);
+            if (item == null)
+            {
+                item = Clients.Local.FirstOrDefault(predicate);
+            }
+            return item;
         }
 
         public bool ProductExists(Func<Product, bool> predicate)
         {
-            return Products.Any(predicate);
+            var exists = Products.Any(predicate);
+            if (!exists)
+            {
+                exists = Products.Local.Any(predicate);
+            }
+            return exists;
         }
 
         public Product GetProduct(Func<Product, bool> predicate)
         {
-            return Products.FirstOrDefault(predicate);
+            var item = Products.FirstOrDefault(predicate);
+            if (item == null)
+            {
+                item = Products.Local.FirstOrDefault(predicate);
+            }
+            return item;
         }
 
         public bool ManagerExists(Func<Manager, bool> predicate)
         {
-            return Managers.Any(predicate);
+            var exists = Managers.Any(predicate);
+            if (!exists)
+            {
+                exists = Managers.Local.Any(predicate);
+            }
+            return exists;
         }
 
         public Manager GetManager(Func<Manager, bool> predicate)
         {
-            return Managers.FirstOrDefault(predicate);
+            var item = Managers.FirstOrDefault(predicate);
+            if (item == null)
+            {
+                item = Managers.Local.FirstOrDefault(predicate);
+            }
+            return item;
         }
     }
 }

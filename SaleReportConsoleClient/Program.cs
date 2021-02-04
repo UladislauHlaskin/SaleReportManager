@@ -10,6 +10,7 @@ namespace SaleReportConsoleClient
     {
         static void Main(string[] args)
         {
+            // выяснить, что делать с дубляжами
             if (PriorProcess() == null)
             {
                 Track();
