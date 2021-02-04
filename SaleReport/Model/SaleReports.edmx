@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SaleReports.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SaleReportsStoreContainer">
+    <EntitySet Name="Files" EntityType="SaleReports.Store.Files" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Records" EntityType="SaleReports.Store.Records" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Managers" EntityType="SaleReports.Store.Managers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Clients" EntityType="SaleReports.Store.Clients" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Products" EntityType="SaleReports.Store.Products" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ClientRecord" Association="SaleReports.Store.ClientRecord">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Record" EntitySet="Records" />
+    </AssociationSet>
+    <AssociationSet Name="ProductRecord" Association="SaleReports.Store.ProductRecord">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Record" EntitySet="Records" />
+    </AssociationSet>
+    <AssociationSet Name="ManagerFile" Association="SaleReports.Store.ManagerFile">
+      <End Role="Manager" EntitySet="Managers" />
+      <End Role="File" EntitySet="Files" />
+    </AssociationSet>
+    <AssociationSet Name="FileRecord" Association="SaleReports.Store.FileRecord">
+      <End Role="File" EntitySet="Files" />
+      <End Role="Record" EntitySet="Records" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Files">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Manager_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Records">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Sum" Type="decimal" Nullable="false" />
+    <Property Name="Client_Id" Type="int" Nullable="false" />
+    <Property Name="Product_Id" Type="int" Nullable="false" />
+    <Property Name="File_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Managers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" />
+  </EntityType>
+  <Association Name="ClientRecord">
+    <End Role="Client" Type="SaleReports.Store.Clients" Multiplicity="1" />
+    <End Role="Record" Type="SaleReports.Store.Records" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Record">
+        <PropertyRef Name="Client_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductRecord">
+    <End Role="Product" Type="SaleReports.Store.Products" Multiplicity="1" />
+    <End Role="Record" Type="SaleReports.Store.Records" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Record">
+        <PropertyRef Name="Product_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ManagerFile">
+    <End Role="Manager" Type="SaleReports.Store.Managers" Multiplicity="1" />
+    <End Role="File" Type="SaleReports.Store.Files" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="File">
+        <PropertyRef Name="Manager_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FileRecord">
+    <End Role="File" Type="SaleReports.Store.Files" Multiplicity="1" />
+    <End Role="Record" Type="SaleReports.Store.Records" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="File">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Record">
+        <PropertyRef Name="File_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="SaleReports" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="SaleReportsContainer1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Files" EntityType="SaleReports.File" />
+          <EntitySet Name="Records" EntityType="SaleReports.Record" />
+          <EntitySet Name="Managers" EntityType="SaleReports.Manager" />
+          <EntitySet Name="Clients" EntityType="SaleReports.Client" />
+          <EntitySet Name="Products" EntityType="SaleReports.Product" />
+          <AssociationSet Name="ClientRecord" Association="SaleReports.ClientRecord">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Record" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="ProductRecord" Association="SaleReports.ProductRecord">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Record" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="ManagerFile" Association="SaleReports.ManagerFile">
+            <End Role="Manager" EntitySet="Managers" />
+            <End Role="File" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="FileRecord" Association="SaleReports.FileRecord">
+            <End Role="File" EntitySet="Files" />
+            <End Role="Record" EntitySet="Records" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Manager" Relationship="SaleReports.ManagerFile" FromRole="File" ToRole="Manager" />
+          <NavigationProperty Name="Record" Relationship="SaleReports.FileRecord" FromRole="File" ToRole="Record" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Record">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Client" Relationship="SaleReports.ClientRecord" FromRole="Record" ToRole="Client" />
+          <NavigationProperty Name="Product" Relationship="SaleReports.ProductRecord" FromRole="Record" ToRole="Product" />
+          <NavigationProperty Name="File" Relationship="SaleReports.FileRecord" FromRole="Record" ToRole="File" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Sum" Type="Decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="File" Relationship="SaleReports.ManagerFile" FromRole="Manager" ToRole="File" />
+          <Property Name="Name" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Record" Relationship="SaleReports.ClientRecord" FromRole="Client" ToRole="Record" />
+          <Property Name="Name" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Record" Relationship="SaleReports.ProductRecord" FromRole="Product" ToRole="Record" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" />
+        </EntityType>
+        <Association Name="ClientRecord">
+          <End Type="SaleReports.Client" Role="Client" Multiplicity="1" />
+          <End Type="SaleReports.Record" Role="Record" Multiplicity="*" />
+        </Association>
+        <Association Name="ProductRecord">
+          <End Type="SaleReports.Product" Role="Product" Multiplicity="1" />
+          <End Type="SaleReports.Record" Role="Record" Multiplicity="*" />
+        </Association>
+        <Association Name="ManagerFile">
+          <End Type="SaleReports.Manager" Role="Manager" Multiplicity="1" />
+          <End Type="SaleReports.File" Role="File" Multiplicity="*" />
+        </Association>
+        <Association Name="FileRecord">
+          <End Type="SaleReports.File" Role="File" Multiplicity="1" />
+          <End Type="SaleReports.Record" Role="Record" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SaleReportsStoreContainer" CdmEntityContainer="SaleReportsContainer1">
+    <EntitySetMapping Name="Files">
+      <EntityTypeMapping TypeName="IsTypeOf(SaleReports.File)">
+        <MappingFragment StoreEntitySet="Files">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Records">
+      <EntityTypeMapping TypeName="IsTypeOf(SaleReports.Record)">
+        <MappingFragment StoreEntitySet="Records">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Sum" ColumnName="Sum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Managers">
+      <EntityTypeMapping TypeName="IsTypeOf(SaleReports.Manager)">
+        <MappingFragment StoreEntitySet="Managers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="IsTypeOf(SaleReports.Client)">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="IsTypeOf(SaleReports.Product)">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ClientRecord" TypeName="SaleReports.ClientRecord" StoreEntitySet="Records">
+      <EndProperty Name="Client">
+        <ScalarProperty Name="Id" ColumnName="Client_Id" />
+      </EndProperty>
+      <EndProperty Name="Record">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProductRecord" TypeName="SaleReports.ProductRecord" StoreEntitySet="Records">
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="Product_Id" />
+      </EndProperty>
+      <EndProperty Name="Record">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ManagerFile" TypeName="SaleReports.ManagerFile" StoreEntitySet="Files">
+      <EndProperty Name="Manager">
+        <ScalarProperty Name="Id" ColumnName="Manager_Id" />
+      </EndProperty>
+      <EndProperty Name="File">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FileRecord" TypeName="SaleReports.FileRecord" StoreEntitySet="Records">
+      <EndProperty Name="File">
+        <ScalarProperty Name="Id" ColumnName="File_Id" />
+      </EndProperty>
+      <EndProperty Name="Record">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
