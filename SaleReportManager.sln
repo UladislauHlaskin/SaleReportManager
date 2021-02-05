@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleReport", "SaleReport\Sa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleReportConsoleClient", "SaleReportConsoleClient\SaleReportConsoleClient.csproj", "{B8371A59-F282-4498-AC61-F7517EEF577B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleReportServiceClient", "SaleReportServiceClient\SaleReportServiceClient.csproj", "{6190B11B-DFCA-4192-BE4B-19A13C16FCDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B8371A59-F282-4498-AC61-F7517EEF577B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8371A59-F282-4498-AC61-F7517EEF577B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8371A59-F282-4498-AC61-F7517EEF577B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6190B11B-DFCA-4192-BE4B-19A13C16FCDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6190B11B-DFCA-4192-BE4B-19A13C16FCDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6190B11B-DFCA-4192-BE4B-19A13C16FCDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6190B11B-DFCA-4192-BE4B-19A13C16FCDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

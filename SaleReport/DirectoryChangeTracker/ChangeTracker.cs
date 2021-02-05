@@ -22,7 +22,7 @@ namespace SaleReport.DirectoryChangeTracker
             }
         }
 
-        public static ChangeTracker GetInstance(FileSystemEventHandler onFileAdded)
+        public static ChangeTracker GetInstance(params FileSystemEventHandler[] onFileAdded)
         {
             if (_tracker == null)
             {
@@ -53,6 +53,9 @@ namespace SaleReport.DirectoryChangeTracker
             if (!_isDisposed)
             {
                 _watcher.Dispose();
+                _tracker = null;
+                _isRunning = false;
+                _isDisposed = true;
             }
         }
     }
