@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using SaleReport.Model;
+using SaleReport.DAL.Model;
 
-namespace SaleReport.FileParser
+namespace SaleReport.BLL.FileParser
 {
     class FileParser
     {

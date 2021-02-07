@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Configuration;
-using SaleReport.DirectoryChangeTracker;
+using SaleReport.BLL.DirectoryChangeTracker;
 using System.Diagnostics;
 
 namespace SaleReportConsoleClient
@@ -10,7 +10,6 @@ namespace SaleReportConsoleClient
     {
         static void Main(string[] args)
         {
-            // выяснить, что делать с дубляжами
             if (PriorProcess() == null)
             {
                 Track();
@@ -53,3 +52,15 @@ namespace SaleReportConsoleClient
         }
     }
 }
+
+///
+/// TODO
+/// 
+/// подписи на ивент +
+/// переименовать контекст (и строку подключения) +
+/// раскидать BLL DAL +
+/// CSV парсер ?
+/// убрать Console.WriteLine в BLL +
+/// exceptions +
+/// служба
+///

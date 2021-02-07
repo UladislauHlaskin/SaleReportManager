@@ -1,7 +1,7 @@
 ﻿using System;
-using SaleReport.Model;
+using SaleReport.DAL.Model;
 
-namespace SaleReport.FileParser
+namespace SaleReport.BLL.FileParser
 {
     class LineParser
     {

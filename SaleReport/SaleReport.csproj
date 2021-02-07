@@ -31,17 +31,42 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper, Version=22.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.22.1.2\lib\net47\CsvHelper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.0\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,42 +75,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DirectoryChangeTracker\ChangeTracker.cs" />
-    <Compile Include="DirectoryChangeTracker\TrackerHandler.cs" />
-    <Compile Include="FileParser\FileParser.cs" />
-    <Compile Include="FileParser\LineParser.cs" />
-    <Compile Include="Model\Client.cs">
+    <Compile Include="BLL\DirectoryChangeTracker\ChangeTracker.cs" />
+    <Compile Include="BLL\DirectoryChangeTracker\TrackerHandler.cs" />
+    <Compile Include="BLL\FileParser\CsvFileRecord.cs" />
+    <Compile Include="BLL\FileParser\CsvHelperParse.cs" />
+    <Compile Include="BLL\FileParser\FileParser.cs" />
+    <Compile Include="BLL\FileParser\LineParser.cs" />
+    <Compile Include="DAL\Model\Client.cs">
       <DependentUpon>SaleReports.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\File.cs">
+    <Compile Include="DAL\Model\File.cs">
       <DependentUpon>SaleReports.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Manager.cs">
+    <Compile Include="DAL\Model\Manager.cs">
       <DependentUpon>SaleReports.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Product.cs">
+    <Compile Include="DAL\Model\Product.cs">
       <DependentUpon>SaleReports.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Record.cs">
+    <Compile Include="DAL\Model\Record.cs">
       <DependentUpon>SaleReports.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\SaleContext.cs" />
-    <Compile Include="Model\SaleReportModel.Context.cs">
+    <Compile Include="DAL\Model\SaleContext.cs" />
+    <Compile Include="DAL\Model\SaleReportModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SaleReportModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\SaleReportModel.cs">
+    <Compile Include="DAL\Model\SaleReportModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SaleReportModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\SaleReports.cs">
+    <Compile Include="DAL\Model\SaleReports.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SaleReports.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\SaleReports.Designer.cs">
+    <Compile Include="DAL\Model\SaleReports.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SaleReports.edmx</DependentUpon>
@@ -94,11 +121,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Model\SaleReports.edmx">
+    <EntityDeploy Include="DAL\Model\SaleReports.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SaleReports.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\SaleReports.edmx.diagram">
+    <None Include="DAL\Model\SaleReports.edmx.diagram">
       <DependentUpon>SaleReports.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -107,18 +134,18 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\SaleReportModel.Context.tt">
+    <Content Include="DAL\Model\SaleReportModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SaleReportModel.Context.cs</LastGenOutput>
       <DependentUpon>SaleReports.edmx</DependentUpon>
     </Content>
-    <Content Include="Model\SaleReportModel.tt">
+    <Content Include="DAL\Model\SaleReportModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SaleReportModel.cs</LastGenOutput>
       <DependentUpon>SaleReports.edmx</DependentUpon>
     </Content>
-    <Content Include="Model\SaleReports.edmx.sql" />
-    <Content Include="Model\SaleReports.tt">
+    <Content Include="DAL\Model\SaleReports.edmx.sql" />
+    <Content Include="DAL\Model\SaleReports.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SaleReports.cs</LastGenOutput>
       <DependentUpon>SaleReports.edmx</DependentUpon>

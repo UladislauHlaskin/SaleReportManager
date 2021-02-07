@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SaleReport.Model
+namespace SaleReport.DAL.Model
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
-    public partial class SaleReportsContainer1 : DbContext
+    
+    public partial class SaleReportModel : DbContext
     {
-        public SaleReportsContainer1()
-            : base("name=SaleReportsContainer1")
+        public SaleReportModel()
+            : base("name=SaleReportModel")
         {
         }
     

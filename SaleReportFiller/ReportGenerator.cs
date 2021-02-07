@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using System.Configuration;
-using SaleReport.Model;
+using SaleReport.DAL.Model;
 using System.Globalization;
 
 namespace SaleReportFiller
@@ -18,7 +18,7 @@ namespace SaleReportFiller
 
         void LoadManagers()
         {
-            using (var context = new SaleReportsContainer1())
+            using (var context = new SaleReportModel())
             {
                 var managers = context.Managers.OrderBy(m => m.Name).ToList();
                 comboBoxManager.DataSource = managers;
@@ -46,7 +46,7 @@ namespace SaleReportFiller
             Random rng = new Random(DateTime.Now.Millisecond);
             dateTimePicker.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, rng.Next(1, DateTime.Now.Day + 1));
             
-            using (var context = new SaleReportsContainer1())
+            using (var context = new SaleReportModel())
             {
                 managerCount = context.Managers.Count();
                 clients = context.Clients.OrderBy(c => c.Name).ToList();

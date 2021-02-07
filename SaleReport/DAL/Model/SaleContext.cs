@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SaleReport.Model
+namespace SaleReport.DAL.Model
 {
-    class SaleContext : SaleReportsContainer1
+    class SaleContext : SaleReportModel
     {
         public bool ClientExists(Func<Client, bool> predicate)
         {

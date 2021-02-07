@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace SaleReport.DirectoryChangeTracker
+namespace SaleReport.BLL.DirectoryChangeTracker
 {
     public class ChangeTracker
     {
@@ -15,7 +15,7 @@ namespace SaleReport.DirectoryChangeTracker
 
         private ChangeTracker(params FileSystemEventHandler[] onFileAdded)
         {
-            FileAdded += TrackerHandler.OnFileAdded;
+            FileAdded += TrackerHandler.OnFileAddedConsole;
             foreach (var t in onFileAdded)
             {
                 FileAdded += t;
@@ -53,6 +53,7 @@ namespace SaleReport.DirectoryChangeTracker
             if (!_isDisposed)
             {
                 _watcher.Dispose();
+                FileAdded = null;
                 _tracker = null;
                 _isRunning = false;
                 _isDisposed = true;
