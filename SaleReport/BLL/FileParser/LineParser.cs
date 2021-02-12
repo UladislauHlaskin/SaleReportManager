@@ -1,5 +1,5 @@
 ﻿using System;
-using SaleReport.DAL.Model;
+using SaleReport.Model;
 
 namespace SaleReport.BLL.FileParser
 {

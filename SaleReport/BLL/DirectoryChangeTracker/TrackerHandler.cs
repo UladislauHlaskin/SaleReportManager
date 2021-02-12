@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;
-using SaleReport.DAL.Model;
+using SaleReport.Model;
 
 namespace SaleReport.BLL.DirectoryChangeTracker
 {

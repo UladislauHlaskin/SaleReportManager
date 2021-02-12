@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace SaleReport.DAL.Model
+namespace SaleReport.Model
 {
     class SaleContext : SaleReportModel
     {

@@ -81,38 +81,38 @@
     <Compile Include="BLL\FileParser\CsvHelperParse.cs" />
     <Compile Include="BLL\FileParser\FileParser.cs" />
     <Compile Include="BLL\FileParser\LineParser.cs" />
-    <Compile Include="DAL\Model\Client.cs">
+    <Compile Include="Model\Client.cs">
       <DependentUpon>SaleReports.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Model\File.cs">
+    <Compile Include="Model\File.cs">
       <DependentUpon>SaleReports.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Model\Manager.cs">
+    <Compile Include="Model\Manager.cs">
       <DependentUpon>SaleReports.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Model\Product.cs">
+    <Compile Include="Model\Product.cs">
       <DependentUpon>SaleReports.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Model\Record.cs">
+    <Compile Include="Model\Record.cs">
       <DependentUpon>SaleReports.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Model\SaleContext.cs" />
-    <Compile Include="DAL\Model\SaleReportModel.Context.cs">
+    <Compile Include="Model\SaleContext.cs" />
+    <Compile Include="Model\SaleReportModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SaleReportModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Model\SaleReportModel.cs">
+    <Compile Include="Model\SaleReportModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SaleReportModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Model\SaleReports.cs">
+    <Compile Include="Model\SaleReports.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SaleReports.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Model\SaleReports.Designer.cs">
+    <Compile Include="Model\SaleReports.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SaleReports.edmx</DependentUpon>
@@ -121,11 +121,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="DAL\Model\SaleReports.edmx">
+    <EntityDeploy Include="Model\SaleReports.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SaleReports.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DAL\Model\SaleReports.edmx.diagram">
+    <None Include="Model\SaleReports.edmx.diagram">
       <DependentUpon>SaleReports.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -134,18 +134,18 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DAL\Model\SaleReportModel.Context.tt">
+    <Content Include="Model\SaleReportModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SaleReportModel.Context.cs</LastGenOutput>
       <DependentUpon>SaleReports.edmx</DependentUpon>
     </Content>
-    <Content Include="DAL\Model\SaleReportModel.tt">
+    <Content Include="Model\SaleReportModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SaleReportModel.cs</LastGenOutput>
       <DependentUpon>SaleReports.edmx</DependentUpon>
     </Content>
-    <Content Include="DAL\Model\SaleReports.edmx.sql" />
-    <Content Include="DAL\Model\SaleReports.tt">
+    <Content Include="Model\SaleReports.edmx.sql" />
+    <Content Include="Model\SaleReports.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SaleReports.cs</LastGenOutput>
       <DependentUpon>SaleReports.edmx</DependentUpon>

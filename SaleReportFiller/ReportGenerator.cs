@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using System.Configuration;
-using SaleReport.DAL.Model;
+using SaleReport.Model;
 using System.Globalization;
 
 namespace SaleReportFiller
@@ -28,12 +28,19 @@ namespace SaleReportFiller
 
         private void ReportGenerator_Load(object sender, EventArgs e)
         {
-            folderBrowserDialog.SelectedPath = ConfigurationManager.AppSettings.Get("SaleDirectoryPath");
-            textBoxDestinationPath.Text = folderBrowserDialog.SelectedPath;
-            LoadManagers();
-            ActiveControl = buttonGenerateData;
+            try
+            {
+                folderBrowserDialog.SelectedPath = ConfigurationManager.AppSettings.Get("SaleDirectoryPath");
+                textBoxDestinationPath.Text = folderBrowserDialog.SelectedPath;
+                LoadManagers();
+                ActiveControl = buttonGenerateData;
 
-            buttonGenerateData_Click(sender, e);
+                buttonGenerateData_Click(sender, e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n\n" + ex.ToString());
+            }
         }
 
         private void buttonGenerateData_Click(object sender, EventArgs e)

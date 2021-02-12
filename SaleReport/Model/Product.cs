@@ -7,23 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SaleReport.DAL.Model
+namespace SaleReport.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Manager
+    public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Manager()
+        public Product()
         {
-            this.File = new HashSet<File>();
+            this.Record = new HashSet<Record>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
+        public decimal Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<File> File { get; set; }
+        public virtual ICollection<Record> Record { get; set; }
     }
 }

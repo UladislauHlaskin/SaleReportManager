@@ -50,7 +50,7 @@ namespace SaleReport.BLL.DirectoryChangeTracker
 
         public void Stop()
         {
-            if (!_isDisposed)
+            if (_isRunning && !_isDisposed)
             {
                 _watcher.Dispose();
                 FileAdded = null;

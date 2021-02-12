@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SaleReport.DAL.Model
+namespace SaleReport.Model
 {
     using System;
     using System.Collections.Generic;
