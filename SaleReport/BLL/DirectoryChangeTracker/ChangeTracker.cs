@@ -13,23 +13,28 @@ namespace SaleReport.BLL.DirectoryChangeTracker
 
         public event FileSystemEventHandler FileAdded;
 
-        private ChangeTracker(params FileSystemEventHandler[] onFileAdded)
+        private ChangeTracker(bool isConsole, params FileSystemEventHandler[] onFileAdded)
         {
-            FileAdded += TrackerHandler.OnFileAddedConsole;
+            if (isConsole)
+                FileAdded += TrackerHandler.OnFileAddedConsole;
+            else
+                FileAdded += TrackerHandler.OnFileAddedService;
             foreach (var t in onFileAdded)
             {
                 FileAdded += t;
             }
         }
 
-        public static ChangeTracker GetInstance(params FileSystemEventHandler[] onFileAdded)
+        public static ChangeTracker GetInstance(bool isConsole, params FileSystemEventHandler[] onFileAdded)
         {
             if (_tracker == null)
             {
                 lock (syncRoot)
                 {
                     if (_tracker == null)
-                        _tracker = new ChangeTracker(onFileAdded);
+                    {
+                        _tracker = new ChangeTracker(isConsole, onFileAdded);
+                    }
                 }
             }
             return _tracker;
@@ -40,6 +45,7 @@ namespace SaleReport.BLL.DirectoryChangeTracker
             if (!_isRunning)
             {
                 _watcher = new FileSystemWatcher();
+                _watcher.EnableRaisingEvents = false;
                 _watcher.Path = directoryPath;
                 _watcher.Filter = "*.csv";
                 _watcher.Created += FileAdded;

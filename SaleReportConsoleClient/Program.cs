@@ -18,7 +18,7 @@ namespace SaleReportConsoleClient
 
         static void Track()
         {
-            ChangeTracker changeTracker = ChangeTracker.GetInstance(Watcher_Created);
+            ChangeTracker changeTracker = ChangeTracker.GetInstance(true, Watcher_Created);
             changeTracker.Run(ConfigurationManager.AppSettings.Get("SaleDirectoryPath"));
 
             Console.WriteLine($"Tracking .csv files in {ConfigurationManager.AppSettings.Get("SaleDirectoryPath")}");

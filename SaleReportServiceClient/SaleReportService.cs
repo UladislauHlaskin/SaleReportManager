@@ -21,29 +21,23 @@ namespace SaleReportServiceClient
 
         protected override void OnStart(string[] args)
         {
-            //_changeTracker = ChangeTracker.GetInstance();
-            //_changeTracker.Run(ConfigurationManager.AppSettings.Get("SaleDirectoryPath"));
-            Thread thread = new Thread(new ThreadStart(Process));
+            Thread thread = new Thread(new ThreadStart(StartService));
             thread.Start();
         }
 
-        void Process()
+        void StartService()
         {
             _enabled = true;
-            Thread.Sleep(100);
-            //_changeTracker = ChangeTracker.GetInstance();
-            //_changeTracker.Run(ConfigurationManager.AppSettings.Get("SaleDirectoryPath"));
-            while(_enabled)
-            {
-                Thread.Sleep(1000);
-            }
+            Thread.Sleep(1000);
+            _changeTracker = ChangeTracker.GetInstance(false);
+            _changeTracker.Run(ConfigurationManager.AppSettings.Get("SaleDirectoryPath"));
         }
 
         protected override void OnStop()
         {
             if (_enabled)
             {
-               // _changeTracker.Stop();
+                _changeTracker.Stop();
                 _enabled = false;
             }
         }
